@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/ilagordinov/Documents/GitHub/chesk/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-hu/values-hu.xml",
+            "map": [
+                {
+                    "source": "/Users/ilagordinov/.gradle/caches/transforms-2/files-2.1/b3b7afa187e557b0761c1b0da4df0ca1/core-1.1.0/res/values-hu/values-hu.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    }
+                }
+            ]
+        }
+    ]
+}

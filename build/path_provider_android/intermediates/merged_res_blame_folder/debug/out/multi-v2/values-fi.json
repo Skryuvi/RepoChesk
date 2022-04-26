@@ -1,0 +1,34 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/ilagordinov/Documents/GitHub/chesk/build/path_provider_android/intermediates/res/merged/debug/values-fi/values-fi.xml",
+            "map": [
+                {
+                    "source": "/Users/ilagordinov/.gradle/caches/transforms-2/files-2.1/b3b7afa187e557b0761c1b0da4df0ca1/core-1.1.0/res/values-fi/values-fi.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/Users/ilagordinov/Documents/GitHub/chesk/build/path_provider_android/intermediates/incremental/mergeDebugResources/merged.dir/values-fi/values-fi.xml",
+            "map": [
+                {
+                    "source": "/Users/ilagordinov/.gradle/caches/transforms-2/files-2.1/b3b7afa187e557b0761c1b0da4df0ca1/core-1.1.0/res/values-fi/values-fi.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    }
+                }
+            ]
+        }
+    ]
+}

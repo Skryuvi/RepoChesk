@@ -1,0 +1,4 @@
+#Fri Mar 18 15:53:59 MSK 2022
+base.0=/Users/ilagordinov/Documents/GitHub/chesk/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
+renamed.0=classes.dex
+path.0=classes.dex

@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/Users/ilagordinov/Documents/GitHub/chesk/build/path_provider_android/intermediates/res/merged/debug/layout-v21/notification_template_icon_group.xml",
+        "source": "/Users/ilagordinov/.gradle/caches/transforms-2/files-2.1/b3b7afa187e557b0761c1b0da4df0ca1/core-1.1.0/res/layout-v21/notification_template_icon_group.xml"
+    },
+    {
+        "merged": "/Users/ilagordinov/Documents/GitHub/chesk/build/path_provider_android/intermediates/res/merged/debug/layout-v21/notification_action.xml",
+        "source": "/Users/ilagordinov/.gradle/caches/transforms-2/files-2.1/b3b7afa187e557b0761c1b0da4df0ca1/core-1.1.0/res/layout-v21/notification_action.xml"
+    },
+    {
+        "merged": "/Users/ilagordinov/Documents/GitHub/chesk/build/path_provider_android/intermediates/res/merged/debug/layout-v21/notification_action_tombstone.xml",
+        "source": "/Users/ilagordinov/.gradle/caches/transforms-2/files-2.1/b3b7afa187e557b0761c1b0da4df0ca1/core-1.1.0/res/layout-v21/notification_action_tombstone.xml"
+    },
+    {
+        "merged": "/Users/ilagordinov/Documents/GitHub/chesk/build/path_provider_android/intermediates/res/merged/debug/layout-v21/notification_template_custom_big.xml",
+        "source": "/Users/ilagordinov/.gradle/caches/transforms-2/files-2.1/b3b7afa187e557b0761c1b0da4df0ca1/core-1.1.0/res/layout-v21/notification_template_custom_big.xml"
+    }
+]
