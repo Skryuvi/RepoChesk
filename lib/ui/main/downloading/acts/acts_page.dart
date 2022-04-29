@@ -245,7 +245,7 @@ class ActLink extends StatelessWidget {
         shrinkWrap: true,
         physics: BouncingScrollPhysics(),
         // padding: EdgeInsets.only(20),
-        itemCount: 5,
+        itemCount: actsList.length,
         itemBuilder: (_, index) {
           return DecoratedBox(
               position: DecorationPosition.foreground,
@@ -256,10 +256,12 @@ class ActLink extends StatelessWidget {
               ),
               child: Ink(
                 // color: Color.fromRGBO(246, 247, 249, 1),
-                color: Color.fromRGBO(245, 245, 245, 1),
+              color: Color.fromRGBO(245, 245, 245, 1),
                 child: ListTile(
+                  minVerticalPadding: 10,
+                  visualDensity: VisualDensity(vertical: -4),
                   contentPadding: EdgeInsets.only(left: 20, right: 20),
-                  title: Text('Акт о несанкционированном вмешательстве в работу прибора учета',
+                  title: Text(actsList[index],
                       style: GoogleFonts.roboto(color: Colors.black, fontSize: 13)),
                   trailing: Image.asset(
                     'assets/arrow_send.png',
