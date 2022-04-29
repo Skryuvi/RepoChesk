@@ -18,7 +18,7 @@ class MainScreen extends StatefulWidget {
 class _MainScreen extends State<MainScreen> {
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext mainContext) {
     return CupertinoPageScaffold(
       child: Stack(
         children: [
@@ -28,7 +28,7 @@ class _MainScreen extends State<MainScreen> {
                 return CupertinoTabView(builder: (context){
                   switch(index){
                     case 0:
-                      return DownloadingPage(title: widget.title);
+                      return DownloadingPage(title: widget.title, mainContext: mainContext);
                     case 1:
                       return SettingsPage(title: widget.title);
                     case 2:
