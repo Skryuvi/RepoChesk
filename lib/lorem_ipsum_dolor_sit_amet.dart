@@ -10,6 +10,18 @@ class MainScreenListSubItem{
   var checked = false;
   MainScreenListSubItem(this.ls, this.pu, this.subName, this.checked);
 }
+final List<String> actsList = [
+  "Акт о возобновлении подачи электроэнергии",
+  "Анкета потребителя",
+  "Акт проверки узла учета электрической энергии",
+  "Акт о выявлении несанкционированного подключения",
+  "Акт о несанкционированном вмешательстве в работу прибора учета",
+  "Акт об отказе в допуске к прибору учета",
+  "Акт ввода прибора учёта в эксплуатацию",
+  "Внесение показаний по прибору учета",
+  "Акт замены/установки прибора учета электроэнергии",
+];
+
 List<MainScreenListItem> locationsLorem = [
   MainScreenListItem('Ленина улица', subFirst),
   MainScreenListItem('Пушкина улица', subSecond),
