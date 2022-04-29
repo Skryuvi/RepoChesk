@@ -7,9 +7,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class DownloadingPage extends StatefulWidget {
-  const DownloadingPage({Key? key, required this.title}) : super(key: key);
+  const DownloadingPage({Key? key, required this.title, required this.mainContext}) : super(key: key);
 
   final String title;
+  final BuildContext mainContext;
 
   @override
   State<DownloadingPage> createState() => _DownloadingPage();
@@ -79,7 +80,7 @@ class _DownloadingPage extends State<DownloadingPage> {
   @override
   initState() {
     notifiers = [];
-    presenter = DownloadingPresenter(context);
+    presenter = DownloadingPresenter(widget.mainContext);
     locationsLorem.forEach((e) {
       notifiers.add(ValueNotifier(false));
     });
