@@ -1,4 +1,0 @@
-io/flutter/plugins/GeneratedPluginRegistrant.java
- io.flutter.plugins.GeneratedPluginRegistrant
-ru/infopro/chesk/chesk/BuildConfig.java
- ru.infopro.chesk.chesk.BuildConfig
