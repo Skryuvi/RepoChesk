@@ -44,8 +44,10 @@ class _ActsPage extends State<ActsPage> {
         body: ListView(
           shrinkWrap: true,
           children: [
+            // ЛС/ПУ инфо
             LsHeader(),
 
+            // Задания
             LsTasks(),
 
             // Создание документа
@@ -86,7 +88,6 @@ class _ActsPage extends State<ActsPage> {
     return ListView.builder(
         shrinkWrap: true,
         physics: BouncingScrollPhysics(),
-        // padding: EdgeInsets.only(20),
         itemCount: actsList.length,
         itemBuilder: (_, index) {
           return DecoratedBox(
@@ -97,7 +98,6 @@ class _ActsPage extends State<ActsPage> {
                 ),
               ),
               child: Ink(
-                // color: Color.fromRGBO(246, 247, 249, 1),
                 color: Color.fromRGBO(245, 245, 245, 1),
                 child: ListTile(
                   minVerticalPadding: 10,
@@ -142,10 +142,6 @@ class LsTasks extends StatelessWidget {
           flex: 30,
           child: Container(
             padding: EdgeInsets.fromLTRB(8, 1, 5, 0),
-            // decoration: BoxDecoration(
-            //   color: Colors.blue[500],
-            //   border: Border.all(),
-            // ),
             child: Container(
               width: MediaQuery.of(context).size.width * 0.1,
               padding: EdgeInsets.fromLTRB(10, 7, 7, 7),
@@ -160,9 +156,8 @@ class LsTasks extends StatelessWidget {
               ),
               child: Text(
                 'Отключение',
-                // style: GoogleFonts.roboto(fontSize: 14, fontWeight: FontWeight.w500, color: borderOrangeBtn),
-                style: TextStyle(fontSize: 13, fontFamily: 'Roboto', fontWeight: FontWeight.w500, color: borderOrangeBtn),
-                // style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: borderOrangeBtn),
+                style: GoogleFonts.roboto(fontSize: 14, fontWeight: FontWeight.w500, color: borderOrangeBtn),
+                // style: TextStyle(fontSize: 13, fontFamily: 'Roboto', fontWeight: FontWeight.w500, color: borderOrangeBtn),
               ),
             ),
           ),
@@ -170,12 +165,6 @@ class LsTasks extends StatelessWidget {
         Flexible(
             flex: 26,
             child: Container(
-                // width: 140,
-                // decoration: BoxDecoration(
-                //   color: Colors.green[500],
-                //   border: Border.all(),
-                // ),
-                // margin: EdgeInsets.only(top:1, right: 20),
                 child: RawMaterialButton(
                   fillColor: orangeBtnColor,
                   splashColor: borderOrangeBtn,
@@ -207,27 +196,14 @@ class LsHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // // width: 100,
-      // // height: 150,
-      // decoration: BoxDecoration(
-      //   color: Colors.green[500],
-      //   border: Border.all()
-      // ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Flexible(
             fit: FlexFit.tight,
             child: Container(
-              // width: 100,
-              // alignment: Alignment.topLeft,
               padding: EdgeInsets.fromLTRB(20, 15, 15, 10),
-              // decoration: BoxDecoration(
-              //     color: Colors.red[500],
-              //     border: Border.all()
-              // ),
               child: Column(
-                // crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Align(
                       alignment: Alignment.topLeft,
@@ -255,11 +231,6 @@ class LsHeader extends StatelessWidget {
           Container(
               width: 70,
               padding: EdgeInsets.only(top: 15),
-              // height: 140,
-              // decoration: BoxDecoration(
-              //     color: Colors.blue[500],
-              //     border: Border.all(),
-              // ),
               child: Align(
                 alignment: Alignment.topCenter,
                 child: Image.asset(
@@ -273,47 +244,3 @@ class LsHeader extends StatelessWidget {
     );
   }
 }
-//
-// class ActLink extends StatelessWidget {
-//   const ActLink({
-//     Key? key,
-//   }) : super(key: key);
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return ListView.builder(
-//         shrinkWrap: true,
-//         physics: BouncingScrollPhysics(),
-//         // padding: EdgeInsets.only(20),
-//         itemCount: actsList.length,
-//         itemBuilder: (_, index) {
-//           return DecoratedBox(
-//               position: DecorationPosition.foreground,
-//               decoration: BoxDecoration(
-//                 border: Border(
-//                   bottom: Divider.createBorderSide(context, color: Colors.grey),
-//                 ),
-//               ),
-//               child: Ink(
-//                 // color: Color.fromRGBO(246, 247, 249, 1),
-//               color: Color.fromRGBO(245, 245, 245, 1),
-//                 child: ListTile(
-//                   minVerticalPadding: 10,
-//                   visualDensity: VisualDensity(vertical: -4),
-//                   contentPadding: EdgeInsets.only(left: 20, right: 20),
-//                   title: Text(actsList[index],
-//                       style: GoogleFonts.roboto(color: Colors.black, fontSize: 13)),
-//                   trailing: Image.asset(
-//                     'assets/arrow_send.png',
-//                     width: 16,
-//                     height: 16,
-//                   ),
-//                   onTap: () {
-//                     prese
-//                   },
-//                   // selected: true,
-//                 ),
-//               ));
-//         });
-//   }
-// }
