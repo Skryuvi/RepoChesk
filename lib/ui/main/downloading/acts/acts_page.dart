@@ -1,5 +1,6 @@
 import 'package:chesk/assets_colors/uses_colors.dart';
 import 'package:chesk/lorem_ipsum_dolor_sit_amet.dart';
+import 'package:chesk/ui/main/downloading/acts/acts_presenter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -14,6 +15,8 @@ class ActsPage extends StatefulWidget {
 }
 
 class _ActsPage extends State<ActsPage> {
+  late ActsPresenter presenter;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,7 +56,8 @@ class _ActsPage extends State<ActsPage> {
                 style: GoogleFonts.roboto(fontSize: 14, fontWeight: FontWeight.bold),
               ),
             ),
-            Flex(direction: Axis.horizontal, children: <Widget>[Expanded(child: ActLink())]),
+            // Flex(direction: Axis.horizontal, children: <Widget>[Expanded(child: ActLink())]),
+            Flex(direction: Axis.horizontal, children: <Widget>[Expanded(child: listView())]),
             Container(
               width: 300,
               padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
@@ -74,7 +78,45 @@ class _ActsPage extends State<ActsPage> {
 
   @override
   initState() {
+    presenter = ActsPresenter(context);
     super.initState();
+  }
+  
+  Widget listView() {
+    return ListView.builder(
+        shrinkWrap: true,
+        physics: BouncingScrollPhysics(),
+        // padding: EdgeInsets.only(20),
+        itemCount: actsList.length,
+        itemBuilder: (_, index) {
+          return DecoratedBox(
+              position: DecorationPosition.foreground,
+              decoration: BoxDecoration(
+                border: Border(
+                  bottom: Divider.createBorderSide(context, color: Colors.grey),
+                ),
+              ),
+              child: Ink(
+                // color: Color.fromRGBO(246, 247, 249, 1),
+                color: Color.fromRGBO(245, 245, 245, 1),
+                child: ListTile(
+                  minVerticalPadding: 10,
+                  visualDensity: VisualDensity(vertical: -4),
+                  contentPadding: EdgeInsets.only(left: 20, right: 20),
+                  title: Text(actsList[index],
+                      style: GoogleFonts.roboto(color: Colors.black, fontSize: 13)),
+                  trailing: Image.asset(
+                    'assets/arrow_send.png',
+                    width: 16,
+                    height: 16,
+                  ),
+                  onTap: () {
+                    presenter.navigateToAct(actsList[index]);
+                  },
+                  // selected: true,
+                ),
+              ));
+        });
   }
 }
 
@@ -91,7 +133,7 @@ class LsTasks extends StatelessWidget {
         Container(
           padding: EdgeInsets.fromLTRB(20, 10, 0, 0),
           child: Text('Задания',
-              style: GoogleFonts.roboto(fontSize: 14, fontWeight: FontWeight.bold)),
+              style: GoogleFonts.roboto(fontSize: 14, fontWeight: FontWeight.w500)),
         ),
     Row(
       children: [
@@ -119,7 +161,8 @@ class LsTasks extends StatelessWidget {
               child: Text(
                 'Отключение',
                 // style: GoogleFonts.roboto(fontSize: 14, fontWeight: FontWeight.w500, color: borderOrangeBtn),
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: borderOrangeBtn),
+                style: TextStyle(fontSize: 13, fontFamily: 'Roboto', fontWeight: FontWeight.w500, color: borderOrangeBtn),
+                // style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: borderOrangeBtn),
               ),
             ),
           ),
@@ -230,45 +273,47 @@ class LsHeader extends StatelessWidget {
     );
   }
 }
-
-class ActLink extends StatelessWidget {
-  const ActLink({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-        shrinkWrap: true,
-        physics: BouncingScrollPhysics(),
-        // padding: EdgeInsets.only(20),
-        itemCount: actsList.length,
-        itemBuilder: (_, index) {
-          return DecoratedBox(
-              position: DecorationPosition.foreground,
-              decoration: BoxDecoration(
-                border: Border(
-                  bottom: Divider.createBorderSide(context, color: Colors.grey),
-                ),
-              ),
-              child: Ink(
-                // color: Color.fromRGBO(246, 247, 249, 1),
-              color: Color.fromRGBO(245, 245, 245, 1),
-                child: ListTile(
-                  minVerticalPadding: 10,
-                  visualDensity: VisualDensity(vertical: -4),
-                  contentPadding: EdgeInsets.only(left: 20, right: 20),
-                  title: Text(actsList[index],
-                      style: GoogleFonts.roboto(color: Colors.black, fontSize: 13)),
-                  trailing: Image.asset(
-                    'assets/arrow_send.png',
-                    width: 16,
-                    height: 16,
-                  ),
-                  onTap: () => print("tap event"),
-                  // selected: true,
-                ),
-              ));
-        });
-  }
-}
+//
+// class ActLink extends StatelessWidget {
+//   const ActLink({
+//     Key? key,
+//   }) : super(key: key);
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return ListView.builder(
+//         shrinkWrap: true,
+//         physics: BouncingScrollPhysics(),
+//         // padding: EdgeInsets.only(20),
+//         itemCount: actsList.length,
+//         itemBuilder: (_, index) {
+//           return DecoratedBox(
+//               position: DecorationPosition.foreground,
+//               decoration: BoxDecoration(
+//                 border: Border(
+//                   bottom: Divider.createBorderSide(context, color: Colors.grey),
+//                 ),
+//               ),
+//               child: Ink(
+//                 // color: Color.fromRGBO(246, 247, 249, 1),
+//               color: Color.fromRGBO(245, 245, 245, 1),
+//                 child: ListTile(
+//                   minVerticalPadding: 10,
+//                   visualDensity: VisualDensity(vertical: -4),
+//                   contentPadding: EdgeInsets.only(left: 20, right: 20),
+//                   title: Text(actsList[index],
+//                       style: GoogleFonts.roboto(color: Colors.black, fontSize: 13)),
+//                   trailing: Image.asset(
+//                     'assets/arrow_send.png',
+//                     width: 16,
+//                     height: 16,
+//                   ),
+//                   onTap: () {
+//                     prese
+//                   },
+//                   // selected: true,
+//                 ),
+//               ));
+//         });
+//   }
+// }

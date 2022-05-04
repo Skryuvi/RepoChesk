@@ -8,11 +8,14 @@
 .buildlog/
 .history
 .svn/
+local.properties
 
 # IntelliJ related
 *.iml
 *.ipr
 *.iws
+
+.gradle/
 .idea/
 
 # The .vscode folder contains launch configuration and tasks you configure in
