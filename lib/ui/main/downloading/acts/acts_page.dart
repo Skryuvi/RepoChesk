@@ -118,11 +118,8 @@ class LsTasks extends StatelessWidget {
               ),
               child: Text(
                 'Отключение',
-                style: GoogleFonts.roboto(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w500,
-                  color: borderOrangeBtn,
-                ),
+                // style: GoogleFonts.roboto(fontSize: 14, fontWeight: FontWeight.w500, color: borderOrangeBtn),
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: borderOrangeBtn),
               ),
             ),
           ),
