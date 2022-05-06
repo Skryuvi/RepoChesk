@@ -156,7 +156,7 @@ class LsTasks extends StatelessWidget {
               ),
               child: Text(
                 'Отключение',
-                style: GoogleFonts.roboto(fontSize: 14, fontWeight: FontWeight.w500, color: borderOrangeBtn),
+                style: GoogleFonts.roboto(fontSize: 14, fontWeight: FontWeight.w500, color: orangeBtnColorBorder),
                 // style: TextStyle(fontSize: 13, fontFamily: 'Roboto', fontWeight: FontWeight.w500, color: borderOrangeBtn),
               ),
             ),
@@ -167,7 +167,7 @@ class LsTasks extends StatelessWidget {
             child: Container(
                 child: RawMaterialButton(
                   fillColor: orangeBtnColor,
-                  splashColor: borderOrangeBtn,
+                  splashColor: orangeBtnColorBorder,
                   padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
                   constraints: BoxConstraints(minHeight: 26),
                   child: Text(
