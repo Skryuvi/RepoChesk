@@ -8,7 +8,10 @@
 .buildlog/
 .history
 .svn/
+<<<<<<< HEAD
 local.properties
+=======
+>>>>>>> 411af8a68ae5e1a38629d373de53cd655cb4ecef
 
 # IntelliJ related
 *.iml
