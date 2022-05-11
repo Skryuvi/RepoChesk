@@ -22,6 +22,25 @@ final List<String> actsList = [
   "Акт замены/установки прибора учета электроэнергии",
 ];
 
+final List<String> puStates = [
+  "соответствует",
+  "не соответствует",
+  "не исправен",
+  "отсутствует",
+  "пломба отсутствует",
+  "пломба нарушена",
+  "безучетное потребление"
+];
+
+final List<String> puStateRejectReasons = [
+  "не соответствует ПУ",
+  "не исправен ПУ",
+  "отсутствует ПУ",
+  "нет доступа к ПУ (загромождение)",
+  "недопуск в помещение хозяином",
+  "злая собака"
+];
+
 List<MainScreenListItem> locationsLorem = [
   MainScreenListItem('Ленина улица', subFirst),
   MainScreenListItem('Пушкина улица', subSecond),

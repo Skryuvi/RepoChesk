@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:chesk/lorem_ipsum_dolor_sit_amet.dart';
 
 class ActsEnteringMetersPage extends StatefulWidget {
   const ActsEnteringMetersPage({Key? key, required this.title}) : super(key: key);
@@ -21,6 +22,8 @@ class _ActsEnteringMetersPageState extends State<ActsEnteringMetersPage> {
   late TextEditingController _dateController;
   final _numberContractController = TextEditingController();
   final _dateContractController = TextEditingController();
+  String? _puStateController;
+  String? _puStateRejectReasonController;
 
   @override
   void initState() {
@@ -70,8 +73,8 @@ class _ActsEnteringMetersPageState extends State<ActsEnteringMetersPage> {
               fieldWithPhoto('Показание прибора учета, ночь', '457'),
               fieldWithPhoto('Показание прибора учета, полупик', ''),
               fieldWithPhoto('Показание прибора учета, пик', ''),
-              selectField('Статусы ПУ'),
-              selectField('Причины не снятия показаний ПУ'),
+              selectField('Статусы ПУ', _puStateController, puStates),
+              selectField('Причины не снятия показаний ПУ', _puStateRejectReasonController, puStateRejectReasons),
               simpleTextField('Примечание', ''),
               SizedBox(height: 18),
               Row(
@@ -308,7 +311,7 @@ class _ActsEnteringMetersPageState extends State<ActsEnteringMetersPage> {
     );
   }
 
-  Column selectField(String title) {
+  Column selectField(String title, String? controller, List<String> values) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -320,6 +323,7 @@ class _ActsEnteringMetersPageState extends State<ActsEnteringMetersPage> {
         SizedBox(height: 7),
         Container(
           child: DropdownButtonFormField<String>(
+            value: _puStateController,
             decoration: InputDecoration(
               filled: true,
               fillColor: Color.fromRGBO(246, 247, 249, 1),
@@ -330,13 +334,17 @@ class _ActsEnteringMetersPageState extends State<ActsEnteringMetersPage> {
               ),
             ),
             // hint: Text('Please choose account type'),
-            items: <String>['A', 'B', 'C', 'D'].map((String value) {
+            items: values.map((String value) {
               return DropdownMenuItem<String>(
                 value: value,
-                child: new Text(value),
+                child: Text(value),
               );
             }).toList(),
-            onChanged: (_) {},
+            onChanged: (value) {
+              setState((){
+                controller = value;
+              });
+            },
           ),
         )
       ],
