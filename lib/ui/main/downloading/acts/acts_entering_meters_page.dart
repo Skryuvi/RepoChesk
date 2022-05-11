@@ -16,6 +16,18 @@ class ActsEnteringMetersPage extends StatefulWidget {
 class _ActsEnteringMetersPageState extends State<ActsEnteringMetersPage> {
   final textFieldColor = Color.fromRGBO(33, 33, 38, 1);
   final labelFontStyle = GoogleFonts.roboto(fontSize: 13, fontWeight: FontWeight.w500);
+
+  // controllers
+  late TextEditingController _dateController;
+  final _numberContractController = TextEditingController();
+  final _dateContractController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    _dateController = TextEditingController(text: DateFormat('dd.MM.yyyy').format(DateTime.now()));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,6 +55,7 @@ class _ActsEnteringMetersPageState extends State<ActsEnteringMetersPage> {
         body: Container(
           padding: EdgeInsets.all(20),
           child: ListView(
+            keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
             children: [
               dateField('Дата составления', DateFormat('dd.MM.yyyy').format(DateTime.now())),
               disabledTextField('Потребитель', 'Иванов Иван Иванович'),
@@ -67,7 +80,8 @@ class _ActsEnteringMetersPageState extends State<ActsEnteringMetersPage> {
                       child: textButton(
                         title: 'Сохранить'.toUpperCase(),
                         color: orangeBtnColor,
-                        borderColor: orangeBtnColorBorder
+                        borderColor: orangeBtnColorBorder,
+
                       )
                   ),
                   SizedBox(width: 20),
@@ -88,21 +102,23 @@ class _ActsEnteringMetersPageState extends State<ActsEnteringMetersPage> {
 
   TextButton textButton({required String title, required Color color, required Color borderColor}) {
     return TextButton(
-                        child: Text(
-                          title,
-                          style: GoogleFonts.roboto(fontSize: 12, color: Colors.white, fontWeight: FontWeight.bold),
-                        ),
-                        style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(color),
-                          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(18.0),
-                              side: BorderSide(color: borderColor)
-                            )
-                          )
-                        ),
-                        onPressed: () => null
-                    );
+        child: Text(
+          title,
+          style: GoogleFonts.roboto(fontSize: 12, color: Colors.white, fontWeight: FontWeight.bold),
+        ),
+        style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all(color),
+            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(18.0),
+                    side: BorderSide(color: borderColor)
+                )
+            )
+        ),
+        onPressed: () {
+          print(_numberContractController.text);
+        }
+    );
   }
 
 
@@ -113,37 +129,43 @@ class _ActsEnteringMetersPageState extends State<ActsEnteringMetersPage> {
         Text(title, style: labelFontStyle),
         SizedBox(height: 7),
         Container(
-                  // height: 30,
-                  // width: 150,
-                  // padding: EdgeInsets.only(top:10),
-                  // color: Color.fromRGBO(242, 242, 242, 1),
-                  child: TextField(
-                    // enabled: false,
-                    controller: TextEditingController(text: value),
-                    style: TextStyle(fontSize: 14, color: textFieldColor),
-                    decoration: InputDecoration(
-                      suffixIcon: Align(
-                        widthFactor: 1.0,
-                        heightFactor: 1.0,
-                        child: ImageIcon(
-                            AssetImage('assets/date.png'),
-                            size: 12,
-                            color: Color.fromRGBO(158, 161, 162, 1)
-                        ),
-                      ),
-                      filled: true,
-                      fillColor: Color.fromRGBO(242, 242, 242, 1),
-                      // isCollapsed: true,
-                      contentPadding: EdgeInsets.all(10),
-                      border: OutlineInputBorder(),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Color.fromRGBO(205, 205, 211, 1), width: 1.0),
-                      ),
-                      // hintText: DateFormat('dd.MM.yyyy').format(DateTime.now()),
-                      // hintStyle: TextStyle(fontSize: 14, color: textFieldColor),
-                    ),
+          // height: 30,
+          // width: 150,
+          // padding: EdgeInsets.only(top:10),
+          // color: Color.fromRGBO(242, 242, 242, 1),
+          child: TextField(
+            // enabled: false,
+            controller: _dateController,
+            keyboardType: TextInputType.number,
+            style: TextStyle(fontSize: 14, color: textFieldColor),
+            decoration: InputDecoration(
+              suffixIcon: Align(
+                widthFactor: 1.0,
+                heightFactor: 1.0,
+                child: GestureDetector(
+                  onTap: () {
+                    _selectDate(_dateController, '');
+                  },
+                  child: ImageIcon(
+                      AssetImage('assets/date.png'),
+                      size: 12,
+                      color: Color.fromRGBO(158, 161, 162, 1)
                   ),
                 ),
+              ),
+              filled: true,
+              fillColor: Color.fromRGBO(242, 242, 242, 1),
+              // isCollapsed: true,
+              contentPadding: EdgeInsets.all(10),
+              border: OutlineInputBorder(),
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Color.fromRGBO(205, 205, 211, 1), width: 1.0),
+              ),
+              // hintText: DateFormat('dd.MM.yyyy').format(DateTime.now()),
+              // hintStyle: TextStyle(fontSize: 14, color: textFieldColor),
+            ),
+          ),
+        ),
       ],
     );
   }
@@ -163,15 +185,15 @@ class _ActsEnteringMetersPageState extends State<ActsEnteringMetersPage> {
             // controller: TextEditingController(text: value),
             style: TextStyle(fontSize: 14, color: textFieldColor),
             decoration: InputDecoration(
-              filled: true,
-              fillColor: Color.fromRGBO(221, 221, 225, 1),
-              contentPadding: EdgeInsets.all(10),
-              border: OutlineInputBorder(),
-              enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Color.fromRGBO(205, 205, 211, 1), width: 1.0),
-              ),
-              hintText: value,
-              hintStyle: TextStyle(fontSize: 14, color: textFieldColor)
+                filled: true,
+                fillColor: Color.fromRGBO(221, 221, 225, 1),
+                contentPadding: EdgeInsets.all(10),
+                border: OutlineInputBorder(),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Color.fromRGBO(205, 205, 211, 1), width: 1.0),
+                ),
+                hintText: value,
+                hintStyle: TextStyle(fontSize: 14, color: textFieldColor)
             ),
           ),
         ),
@@ -191,6 +213,8 @@ class _ActsEnteringMetersPageState extends State<ActsEnteringMetersPage> {
               Text('Номер договора электроснабжения', style: labelFontStyle),
               SizedBox(height: 7),
               TextField(
+                controller: _numberContractController,
+                keyboardType: TextInputType.number,
                 style: TextStyle(fontSize: 14, color: textFieldColor),
                 decoration: InputDecoration(
                   contentPadding: EdgeInsets.all(10),
@@ -212,15 +236,22 @@ class _ActsEnteringMetersPageState extends State<ActsEnteringMetersPage> {
               Text('Дата договора электроснабжения', style: labelFontStyle),
               SizedBox(height: 7),
               TextField(
+                controller: _dateContractController,
+                // keyboardType: TextInputType.datetime,
                 style: TextStyle(fontSize: 14, color: textFieldColor),
                 decoration: InputDecoration(
                   suffixIcon: Align(
                     widthFactor: 1.0,
                     heightFactor: 1.0,
-                    child: ImageIcon(
-                        AssetImage('assets/date.png'),
-                        size: 12,
-                        color: Color.fromRGBO(158, 161, 162, 1)
+                    child: GestureDetector(
+                      onTap: () {
+                        _selectDate(_dateContractController, '');
+                      },
+                      child: ImageIcon(
+                          AssetImage('assets/date.png'),
+                          size: 12,
+                          color: Color.fromRGBO(158, 161, 162, 1)
+                      ),
                     ),
                   ),
                   contentPadding: EdgeInsets.all(10),
@@ -327,13 +358,13 @@ class _ActsEnteringMetersPageState extends State<ActsEnteringMetersPage> {
             controller: TextEditingController(text: value),
             style: TextStyle(fontSize: 14, color: textFieldColor),
             decoration: InputDecoration(
-                filled: true,
-                fillColor: Color.fromRGBO(246, 247, 249, 1),
-                contentPadding: EdgeInsets.all(10),
-                border: OutlineInputBorder(),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Color.fromRGBO(205, 205, 211, 1), width: 1.0),
-                ),
+              filled: true,
+              fillColor: Color.fromRGBO(246, 247, 249, 1),
+              contentPadding: EdgeInsets.all(10),
+              border: OutlineInputBorder(),
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Color.fromRGBO(205, 205, 211, 1), width: 1.0),
+              ),
             ),
           ),
         ),
@@ -341,5 +372,25 @@ class _ActsEnteringMetersPageState extends State<ActsEnteringMetersPage> {
     );
   }
 
+
+  Future<void> _selectDate(TextEditingController controller, String type) async {
+    var selectedActDate = DateTime.now();
+
+    final DateTime? picked = await showDatePicker(
+        context: context,
+        initialDate: selectedActDate,
+        firstDate: DateTime(1980, 8),
+        lastDate: DateTime(2101));
+    if (picked != null && picked != selectedActDate) {
+      var formattedDate = DateFormat('dd.MM.yyyy').format(picked);
+      var notFormatted = DateFormat('yyyy-MM-dd').format(picked);
+      if (type == 'act_date') {} else if (type == 'release_new_pu_date') {} else
+      if (type == 'replacement_date') {} else
+      if (type == 'new_pu_last_verif_date') {} else if (type == 'new_pu_next_verif_date') {}
+
+      setState(() {});
+      controller.text = formattedDate;
+    }
+  }
 
 }
