@@ -24,11 +24,22 @@ class _ActsEnteringMetersPageState extends State<ActsEnteringMetersPage> {
   final _dateContractController = TextEditingController();
   String? _puStateController;
   String? _puStateRejectReasonController;
+  late TextEditingController _indicationSimplePuController;
+  // final _indicationPuDayController = TextEditingController();
+  late TextEditingController _indicationPuDayController;
+  // final _indicationPuNightController = TextEditingController();
+  late TextEditingController _indicationPuNightController;
+  final _indicationPuHalfPeakController = TextEditingController();
+  final _indicationPuPeakController = TextEditingController();
+  final _noteController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
     _dateController = TextEditingController(text: DateFormat('dd.MM.yyyy').format(DateTime.now()));
+    _indicationSimplePuController = TextEditingController(text: '1263');
+    _indicationPuDayController = TextEditingController(text: '1263');
+    _indicationPuNightController = TextEditingController(text: '457');
   }
 
   @override
@@ -68,14 +79,14 @@ class _ActsEnteringMetersPageState extends State<ActsEnteringMetersPage> {
               SizedBox(height: 18),
               numberAndDateContractFields(),
               disabledTextField('Адрес, где установлен прибор учета', 'Ул. Пушкина 12 кв 124'),
-              fieldWithPhoto('Показание 1-но тарифного прибора учета', '1263'),
-              fieldWithPhoto('Показание прибора учета, день', '1263'),
-              fieldWithPhoto('Показание прибора учета, ночь', '457'),
-              fieldWithPhoto('Показание прибора учета, полупик', ''),
-              fieldWithPhoto('Показание прибора учета, пик', ''),
+              fieldWithPhoto('Показание 1-но тарифного прибора учета', _indicationSimplePuController, '1263'),
+              fieldWithPhoto('Показание прибора учета, день', _indicationPuDayController,'1263'),
+              fieldWithPhoto('Показание прибора учета, ночь', _indicationPuNightController, '457'),
+              fieldWithPhoto('Показание прибора учета, полупик', _indicationPuHalfPeakController, ''),
+              fieldWithPhoto('Показание прибора учета, пик', _indicationPuPeakController, ''),
               selectField('Статусы ПУ', _puStateController, puStates),
               selectField('Причины не снятия показаний ПУ', _puStateRejectReasonController, puStateRejectReasons),
-              simpleTextField('Примечание', ''),
+              simpleTextField('Примечание', _noteController, ''),
               SizedBox(height: 18),
               Row(
                 children: [
@@ -271,7 +282,7 @@ class _ActsEnteringMetersPageState extends State<ActsEnteringMetersPage> {
     );
   }
 
-  Column fieldWithPhoto(String title, String value) {
+  Column fieldWithPhoto(String title, TextEditingController controller, String value) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -283,7 +294,8 @@ class _ActsEnteringMetersPageState extends State<ActsEnteringMetersPage> {
         SizedBox(height: 7),
         Container(
           child: TextField(
-            controller: TextEditingController(text: value),
+            controller: controller,
+            keyboardType: TextInputType.number,
             style: TextStyle(fontSize: 14, color: textFieldColor),
             decoration: InputDecoration(
               suffixIcon: Align(
@@ -323,7 +335,7 @@ class _ActsEnteringMetersPageState extends State<ActsEnteringMetersPage> {
         SizedBox(height: 7),
         Container(
           child: DropdownButtonFormField<String>(
-            value: _puStateController,
+            value: controller,
             decoration: InputDecoration(
               filled: true,
               fillColor: Color.fromRGBO(246, 247, 249, 1),
@@ -343,6 +355,7 @@ class _ActsEnteringMetersPageState extends State<ActsEnteringMetersPage> {
             onChanged: (value) {
               setState((){
                 controller = value;
+                print(_puStateController);
               });
             },
           ),
@@ -351,7 +364,7 @@ class _ActsEnteringMetersPageState extends State<ActsEnteringMetersPage> {
     );
   }
 
-  Column simpleTextField(String title, String value) {
+  Column simpleTextField(String title, TextEditingController controller, String value) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -363,7 +376,7 @@ class _ActsEnteringMetersPageState extends State<ActsEnteringMetersPage> {
         SizedBox(height: 7),
         Container(
           child: TextField(
-            controller: TextEditingController(text: value),
+            controller: controller,
             style: TextStyle(fontSize: 14, color: textFieldColor),
             decoration: InputDecoration(
               filled: true,
