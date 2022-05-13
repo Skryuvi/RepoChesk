@@ -18,12 +18,14 @@ class _ActsEnteringMetersPageState extends State<ActsEnteringMetersPage> {
   final textFieldColor = Color.fromRGBO(33, 33, 38, 1);
   final labelFontStyle = GoogleFonts.roboto(fontSize: 13, fontWeight: FontWeight.w500);
 
+  var _formKey = GlobalKey<FormState>();
+  String? _puStateController;
+  String? _puStateControllerError;
+  String? _puStateRejectReasonController;
+
+
   // controllers
   late TextEditingController _dateController;
-  final _numberContractController = TextEditingController();
-  final _dateContractController = TextEditingController();
-  String? _puStateController;
-  String? _puStateRejectReasonController;
   late TextEditingController _indicationSimplePuController;
   // final _indicationPuDayController = TextEditingController();
   late TextEditingController _indicationPuDayController;
@@ -66,57 +68,64 @@ class _ActsEnteringMetersPageState extends State<ActsEnteringMetersPage> {
                     )),
               )),
         ),
-        body: Container(
-          padding: EdgeInsets.all(20),
-          child: ListView(
-            keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-            children: [
-              dateField('Дата составления', DateFormat('dd.MM.yyyy').format(DateTime.now())),
-              disabledTextField('Потребитель', 'Иванов Иван Иванович'),
-              disabledTextField('Адрес регистрации', 'Ул. Пушкина 12 кв 124'),
-              disabledTextField('Номер телефона', '8-927-56-56-56'),
-              disabledTextField('Номер лицевого счета', '23754890'),
-              SizedBox(height: 18),
-              numberAndDateContractFields(),
-              disabledTextField('Адрес, где установлен прибор учета', 'Ул. Пушкина 12 кв 124'),
-              fieldWithPhoto('Показание 1-но тарифного прибора учета', _indicationSimplePuController, '1263'),
-              fieldWithPhoto('Показание прибора учета, день', _indicationPuDayController,'1263'),
-              fieldWithPhoto('Показание прибора учета, ночь', _indicationPuNightController, '457'),
-              fieldWithPhoto('Показание прибора учета, полупик', _indicationPuHalfPeakController, ''),
-              fieldWithPhoto('Показание прибора учета, пик', _indicationPuPeakController, ''),
-              // selectFieldPu('Статусы ПУ', _puStateController, puStates),
-              selectFieldPu('Статусы ПУ', puStates),
-              selectFieldPuReject('Причины не снятия показаний ПУ', puStateRejectReasons),
-              simpleTextField('Примечание', _noteController, ''),
-              SizedBox(height: 18),
-              Row(
-                children: [
-                  Expanded(
-                      child: RawMaterialButton(
-                        onPressed: () {
-                          print(_indicationPuPeakController.text);
-                          print(_indicationPuHalfPeakController.text);
-                        },
-                        fillColor: orangeBtnColor,
-                        shape: const StadiumBorder(),
-                        child: Text(
-                          "Сохранить".toUpperCase(),
-                          maxLines: 1,
-                          style: GoogleFonts.roboto(fontSize: 12, color: Colors.white, fontWeight: FontWeight.w500),
-                        ),
-                      )
-                  ),
-                  SizedBox(width: 20),
-                  Expanded(
-                      child: textButton(
-                          title: 'Распечатать'.toUpperCase(),
-                          color: blueBtnColor,
-                          borderColor: blueBtnColorBorder
-                      )
-                  ),
-                ],
-              )
-            ],
+        body: Form(
+          key: _formKey,
+          autovalidateMode: AutovalidateMode.onUserInteraction,
+          child: Container(
+            padding: EdgeInsets.all(20),
+            child: ListView(
+              keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+              children: [
+                dateField('Дата составления', DateFormat('dd.MM.yyyy').format(DateTime.now())),
+                disabledTextField('Потребитель', 'Иванов Иван Иванович'),
+                disabledTextField('Адрес регистрации', 'Ул. Пушкина 12 кв 124'),
+                disabledTextField('Номер телефона', '8-927-56-56-56'),
+                disabledTextField('Номер лицевого счета', '23754890'),
+                SizedBox(height: 18),
+                numberAndDateContractFields(),
+                disabledTextField('Номер прибора учета', '79402374'),
+                disabledTextField('Адрес, где установлен прибор учета', 'Ул. Пушкина 12 кв 124'),
+                fieldWithPhoto('Показание 1-но тарифного прибора учета', _indicationSimplePuController, '1263'),
+                fieldWithPhoto('Показание прибора учета, день', _indicationPuDayController,'1263'),
+                fieldWithPhoto('Показание прибора учета, ночь', _indicationPuNightController, '457'),
+                fieldWithPhoto('Показание прибора учета, полупик', _indicationPuHalfPeakController, ''),
+                fieldWithPhoto('Показание прибора учета, пик', _indicationPuPeakController, ''),
+                // selectFieldPu('Статусы ПУ', _puStateController, puStates),
+                selectFieldPu('Статусы ПУ', puStates),
+                selectFieldPuReject('Причины не снятия показаний ПУ', puStateRejectReasons),
+                simpleTextField('Примечание', _noteController, ''),
+                SizedBox(height: 18),
+                Row(
+                  children: [
+                    Expanded(
+                        child: RawMaterialButton(
+                          onPressed: () {
+                            if (_formKey.currentState!.validate()) {
+                              _formKey.currentState!.save();
+                              // print(_formKey.currentState);
+                            }
+                          },
+                          fillColor: orangeBtnColor,
+                          shape: const StadiumBorder(),
+                          child: Text(
+                            "Сохранить".toUpperCase(),
+                            maxLines: 1,
+                            style: GoogleFonts.roboto(fontSize: 12, color: Colors.white, fontWeight: FontWeight.w500),
+                          ),
+                        )
+                    ),
+                    SizedBox(width: 20),
+                    Expanded(
+                        child: textButton(
+                            title: 'Распечатать'.toUpperCase(),
+                            color: blueBtnColor,
+                            borderColor: blueBtnColorBorder
+                        )
+                    ),
+                  ],
+                )
+              ],
+            ),
           ),
         )
     );
@@ -138,7 +147,6 @@ class _ActsEnteringMetersPageState extends State<ActsEnteringMetersPage> {
             )
         ),
         onPressed: () {
-          print(_numberContractController.text);
         }
     );
   }
@@ -204,6 +212,7 @@ class _ActsEnteringMetersPageState extends State<ActsEnteringMetersPage> {
         SizedBox(height: 7),
         Container(
           child: TextField(
+            enabled: false,
             // controller: TextEditingController(text: value),
             style: TextStyle(fontSize: 14, color: textFieldColor),
             decoration: InputDecoration(
@@ -235,15 +244,20 @@ class _ActsEnteringMetersPageState extends State<ActsEnteringMetersPage> {
               Text('Номер договора электроснабжения', style: labelFontStyle),
               SizedBox(height: 7),
               TextField(
-                controller: _numberContractController,
+                // controller: _numberContractController,
+                enabled: false,
                 keyboardType: TextInputType.number,
                 style: TextStyle(fontSize: 14, color: textFieldColor),
                 decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Color.fromRGBO(221, 221, 225, 1),
                   contentPadding: EdgeInsets.all(10),
                   border: OutlineInputBorder(),
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Color.fromRGBO(205, 205, 211, 1), width: 1.0),
                   ),
+                  hintText: '123123',
+                  hintStyle: TextStyle(fontSize: 14, color: textFieldColor)
                 ),
               )
             ],
@@ -258,7 +272,8 @@ class _ActsEnteringMetersPageState extends State<ActsEnteringMetersPage> {
               Text('Дата договора электроснабжения', style: labelFontStyle),
               SizedBox(height: 7),
               TextField(
-                controller: _dateContractController,
+                // controller: _dateContractController,
+                enabled: false,
                 // keyboardType: TextInputType.datetime,
                 style: TextStyle(fontSize: 14, color: textFieldColor),
                 decoration: InputDecoration(
@@ -267,7 +282,7 @@ class _ActsEnteringMetersPageState extends State<ActsEnteringMetersPage> {
                     heightFactor: 1.0,
                     child: GestureDetector(
                       onTap: () {
-                        _selectDate(_dateContractController, '');
+                        // _selectDate(_dateContractController, '');
                       },
                       child: ImageIcon(
                           AssetImage('assets/date.png'),
@@ -281,6 +296,8 @@ class _ActsEnteringMetersPageState extends State<ActsEnteringMetersPage> {
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Color.fromRGBO(205, 205, 211, 1), width: 1.0),
                   ),
+                  filled: true,
+                  fillColor: Color.fromRGBO(221, 221, 225, 1),
                 ),
               )
             ],
@@ -301,7 +318,7 @@ class _ActsEnteringMetersPageState extends State<ActsEnteringMetersPage> {
         ),
         SizedBox(height: 7),
         Container(
-          child: TextField(
+          child: TextFormField(
             controller: controller,
             keyboardType: TextInputType.number,
             style: TextStyle(fontSize: 14, color: textFieldColor),
@@ -360,9 +377,12 @@ class _ActsEnteringMetersPageState extends State<ActsEnteringMetersPage> {
                 child: Text(label),
               );
             }).toList(),
+            validator: (value) {
+              return value?.isEmpty ?? true ? 'Поле обязательно для заполнения' : null;
+            },
             onChanged: (newValue) {
               setState((){
-                _puStateController = newValue!;
+                _puStateController = newValue;
               });
             },
           ),
@@ -402,7 +422,7 @@ class _ActsEnteringMetersPageState extends State<ActsEnteringMetersPage> {
             }).toList(),
             onChanged: (newValue) {
               setState((){
-                _puStateRejectReasonController = newValue!;
+                _puStateRejectReasonController = newValue;
               });
             },
           ),
