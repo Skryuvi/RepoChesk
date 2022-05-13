@@ -84,18 +84,26 @@ class _ActsEnteringMetersPageState extends State<ActsEnteringMetersPage> {
               fieldWithPhoto('Показание прибора учета, ночь', _indicationPuNightController, '457'),
               fieldWithPhoto('Показание прибора учета, полупик', _indicationPuHalfPeakController, ''),
               fieldWithPhoto('Показание прибора учета, пик', _indicationPuPeakController, ''),
-              selectField('Статусы ПУ', _puStateController, puStates),
-              selectField('Причины не снятия показаний ПУ', _puStateRejectReasonController, puStateRejectReasons),
+              // selectFieldPu('Статусы ПУ', _puStateController, puStates),
+              selectFieldPu('Статусы ПУ', puStates),
+              selectFieldPuReject('Причины не снятия показаний ПУ', puStateRejectReasons),
               simpleTextField('Примечание', _noteController, ''),
               SizedBox(height: 18),
               Row(
                 children: [
                   Expanded(
-                      child: textButton(
-                        title: 'Сохранить'.toUpperCase(),
-                        color: orangeBtnColor,
-                        borderColor: orangeBtnColorBorder,
-
+                      child: RawMaterialButton(
+                        onPressed: () {
+                          print(_indicationPuPeakController.text);
+                          print(_indicationPuHalfPeakController.text);
+                        },
+                        fillColor: orangeBtnColor,
+                        shape: const StadiumBorder(),
+                        child: Text(
+                          "Сохранить".toUpperCase(),
+                          maxLines: 1,
+                          style: GoogleFonts.roboto(fontSize: 12, color: Colors.white, fontWeight: FontWeight.w500),
+                        ),
                       )
                   ),
                   SizedBox(width: 20),
@@ -323,7 +331,7 @@ class _ActsEnteringMetersPageState extends State<ActsEnteringMetersPage> {
     );
   }
 
-  Column selectField(String title, String? controller, List<String> values) {
+  Column selectFieldPu(String title, List<String> values) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -335,7 +343,7 @@ class _ActsEnteringMetersPageState extends State<ActsEnteringMetersPage> {
         SizedBox(height: 7),
         Container(
           child: DropdownButtonFormField<String>(
-            value: controller,
+            value: _puStateController,
             decoration: InputDecoration(
               filled: true,
               fillColor: Color.fromRGBO(246, 247, 249, 1),
@@ -346,16 +354,55 @@ class _ActsEnteringMetersPageState extends State<ActsEnteringMetersPage> {
               ),
             ),
             // hint: Text('Please choose account type'),
-            items: values.map((String value) {
+            items: values.map((String label) {
               return DropdownMenuItem<String>(
-                value: value,
-                child: Text(value),
+                value: label,
+                child: Text(label),
               );
             }).toList(),
-            onChanged: (value) {
+            onChanged: (newValue) {
               setState((){
-                controller = value;
-                print(_puStateController);
+                _puStateController = newValue!;
+              });
+            },
+          ),
+        )
+      ],
+    );
+  }
+
+  Column selectFieldPuReject(String title, List<String> values) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        SizedBox(height: 18),
+        Text(
+          title,
+          style: labelFontStyle,
+        ),
+        SizedBox(height: 7),
+        Container(
+          child: DropdownButtonFormField<String>(
+            value: _puStateRejectReasonController,
+            decoration: InputDecoration(
+              filled: true,
+              fillColor: Color.fromRGBO(246, 247, 249, 1),
+              contentPadding: EdgeInsets.all(10),
+              border: OutlineInputBorder(),
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Color.fromRGBO(171, 171, 181, 1), width: 1.0),
+              ),
+            ),
+            // hint: Text('Please choose account type'),
+            items: values.map((String label) {
+              return DropdownMenuItem<String>(
+                value: label,
+                child: Text(label),
+              );
+            }).toList(),
+            onChanged: (newValue) {
+              setState((){
+                _puStateRejectReasonController = newValue!;
               });
             },
           ),
