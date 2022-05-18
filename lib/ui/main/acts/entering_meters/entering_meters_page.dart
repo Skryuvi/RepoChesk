@@ -5,19 +5,16 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:chesk/lorem_ipsum_dolor_sit_amet.dart';
 
-class ActsEnteringMetersPage extends StatefulWidget {
-  const ActsEnteringMetersPage({Key? key, required this.title}) : super(key: key);
+class EnteringMetersPage extends StatefulWidget {
+  const EnteringMetersPage({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
   @override
-  State<ActsEnteringMetersPage> createState() => _ActsEnteringMetersPageState();
+  State<EnteringMetersPage> createState() => _EnteringMetersPageState();
 }
 
-class _ActsEnteringMetersPageState extends State<ActsEnteringMetersPage> {
-  final textFieldColor = Color.fromRGBO(33, 33, 38, 1);
-  final labelFontStyle = GoogleFonts.roboto(fontSize: 13, fontWeight: FontWeight.w500);
-
+class _EnteringMetersPageState extends State<EnteringMetersPage> {
   var _formKey = GlobalKey<FormState>();
   String? _puStateController;
   String? _puStateControllerError;
@@ -54,18 +51,10 @@ class _ActsEnteringMetersPageState extends State<ActsEnteringMetersPage> {
               alignment: Alignment.centerLeft,
               child: Text(widget.title, style: GoogleFonts.roboto(color: Colors.white))),
           leading: GestureDetector(
-              onTap: () {
-                Navigator.of(context).pop();
-              },
+              onTap: () => Navigator.of(context).pop(),
               child: Container(
-                height: 64,
-                width: 20,
-                child: Center(
-                    child: Image.asset(
-                      'assets/nav_back.png',
-                      height: 16,
-                      width: 16,
-                    )),
+                height: 64, width: 20,
+                child: Center(child: Image.asset('assets/nav_back.png', height: 16, width: 16,)),
               )),
         ),
         body: Form(

@@ -1,7 +1,8 @@
 import 'package:chesk/splash_screen_presenter.dart';
 import 'package:flutter/material.dart';
 
-import 'package:chesk/ui/main/downloading/acts/acts_entering_meters_page.dart';
+import 'package:chesk/ui/main/acts/entering_meters/entering_meters_page.dart';
+import 'package:chesk/ui/main/acts/consumer_form/cunsumer_form_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,7 +15,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       // home: SplashScreen(title: 'Flutter Demo Home Page'),
-      home: ActsEnteringMetersPage(title: 'Внесение показаний по прибору учета'),
+      // home: EnteringMetersPage(title: 'Внесение показаний по прибору учета'),
+      home: ConsumerFormPage(title: 'Анкета потребителя'),
     );
   }
 }

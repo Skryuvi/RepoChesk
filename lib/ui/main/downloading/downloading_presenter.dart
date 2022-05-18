@@ -2,7 +2,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:page_transition/page_transition.dart';
 
-import 'acts/acts_page.dart';
+import 'package:chesk/ui/main/acts/acts_page.dart';
 
 class DownloadingPresenter {
   BuildContext context;

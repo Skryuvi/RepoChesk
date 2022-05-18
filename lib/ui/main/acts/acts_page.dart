@@ -1,6 +1,6 @@
 import 'package:chesk/assets_colors/uses_colors.dart';
 import 'package:chesk/lorem_ipsum_dolor_sit_amet.dart';
-import 'package:chesk/ui/main/downloading/acts/acts_presenter.dart';
+import 'package:chesk/ui/main/acts/acts_presenter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
