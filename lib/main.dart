@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:chesk/ui/main/acts/entering_meters/entering_meters_page.dart';
 import 'package:chesk/ui/main/acts/consumer_form/cunsumer_form_page.dart';
+import 'package:chesk/ui/main/acts/checking_pu/checking_pu_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -16,7 +17,8 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       // home: SplashScreen(title: 'Flutter Demo Home Page'),
       // home: EnteringMetersPage(title: 'Внесение показаний по прибору учета'),
-      home: ConsumerFormPage(title: 'Анкета потребителя'),
+      // home: ConsumerFormPage(title: 'Анкета потребителя'),
+      home: CheckingPuPage(title: 'Акт проверки узла учета электрической энергии'),
     );
   }
 }

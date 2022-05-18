@@ -37,8 +37,12 @@ final Map<String, String> actsList2 = {
 // типы приборов учета
 final List<String> puTypes = [
   "Меркурий 234 ARTM",
-  "Меркурий 234 ARTM2",
-  "неизвестный",
+  "Меркурий 234 ARTM с функциями телемеханики (трехфазный)",
+  "Меркурий 208 (однофазный)",
+  "СЭТ-4ТМ.03М.01",
+  "УСПД RTU-525",
+  "NP73E.1-10-1 (FSK-132)",
+  "ЦЭ2726А",
 ];
 
 // состояния прибора учета
@@ -62,8 +66,21 @@ final List<String> puStateRejectReasons = [
   "злая собака"
 ];
 
+// механические повреждения ПУ
 final List<String> mechanicalDamageValues = ['Отсутствуют', 'Присутствуют'];
+// Признаки вмешательства в работу ПУ и безучетного потребления
 final List<String> unmeteredConsumptionValues = ['Отсутствуют', 'Присутствуют'];
+// Отверстия, трещины в корпусе ПУ
+final List<String> holesExistValues = ['Отсутствуют', 'Присутствуют'];
+// Прилегание стекла индикатора
+final List<String> fittingIndicatorGlassValues = ['Плотное', 'Не плотное'];
+// Нарушение пломб
+final List<String> stampDamageValues = ['Отсутствуют', 'Присутствуют'];
+// Свободный доступ к элементам коммутации
+final List<String> switchingElementsFreeAccessValues = ['Отсутствует', 'Присутствует'];
+// Прибор учета электрической энергии считается Исправным или Вышедшим из строя
+final List<String> serviceabilityPuValues = ['Исправным', 'Вышедшим из строя'];
+
 
 List<MainScreenListItem> locationsLorem = [
   MainScreenListItem('Ленина улица', subFirst),
