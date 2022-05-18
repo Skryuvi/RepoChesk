@@ -131,7 +131,7 @@ class _ConsumerFormPageState extends State<ConsumerFormPage> {
                 SizedBox(height: 18),
                 filledTextField('Номер прибора учета', _numberPuController),
                 SizedBox(height: 18),
-                selectTypePu('Статусы ПУ', puTypes),
+                selectTypePu('Тип прибора учета', puTypes),
                 SizedBox(height: 18),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -152,15 +152,17 @@ class _ConsumerFormPageState extends State<ConsumerFormPage> {
                     Expanded(flex: 1, child: dateField('Дата поверки', _Controller))
                   ],
                 ),
-                SizedBox(height: 18),
 
+                SizedBox(height: 18),
                 // наличие пломб
                 sealsPresence(),
 
+                SizedBox(height: 18),
                 selectMechanicalDamage(
                   'Проведение наружного осмотра, механические повреждения',
                   mechanicalDamageValues
                 ),
+                SizedBox(height: 18),
                 selectUnmeteredConsumption(
                   'Проверка на наличие признаков вмешательства в работу ПУ и безучетного потребления',
                   unmeteredConsumptionValues
@@ -300,7 +302,6 @@ class _ConsumerFormPageState extends State<ConsumerFormPage> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // SizedBox(height: 18),
         Text(title, style: labelFontStyle),
         SizedBox(height: 7),
         Container(
@@ -339,7 +340,6 @@ class _ConsumerFormPageState extends State<ConsumerFormPage> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // SizedBox(height: 18),
         Text(
           title,
           style: labelFontStyle,
@@ -392,7 +392,6 @@ class _ConsumerFormPageState extends State<ConsumerFormPage> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // SizedBox(height: 18),
         Text(
           title,
           style: labelFontStyle,
@@ -421,7 +420,6 @@ class _ConsumerFormPageState extends State<ConsumerFormPage> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(height: 18),
         Text(
           title,
           style: labelFontStyle,
@@ -430,6 +428,7 @@ class _ConsumerFormPageState extends State<ConsumerFormPage> {
         Container(
           child: DropdownButtonFormField<String>(
             value: _puTypeController,
+            isExpanded: true,
             decoration: InputDecoration(
               filled: true,
               fillColor: Color.fromRGBO(246, 247, 249, 1),
@@ -465,7 +464,6 @@ class _ConsumerFormPageState extends State<ConsumerFormPage> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(height: 18),
         Text(
           title,
           style: labelFontStyle,
@@ -474,6 +472,7 @@ class _ConsumerFormPageState extends State<ConsumerFormPage> {
         Container(
           child: DropdownButtonFormField<String>(
             value: _unmeteredConsumptionController,
+            isExpanded: true,
             decoration: InputDecoration(
               filled: true,
               fillColor: Color.fromRGBO(246, 247, 249, 1),
@@ -509,7 +508,6 @@ class _ConsumerFormPageState extends State<ConsumerFormPage> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(height: 18),
         Text(
           title,
           style: labelFontStyle,
@@ -518,6 +516,7 @@ class _ConsumerFormPageState extends State<ConsumerFormPage> {
         Container(
           child: DropdownButtonFormField<String>(
             value: _mechanicalDamageController,
+            isExpanded: true,
             decoration: InputDecoration(
               filled: true,
               fillColor: Color.fromRGBO(246, 247, 249, 1),

@@ -350,6 +350,7 @@ class _EnteringMetersPageState extends State<EnteringMetersPage> {
         Container(
           child: DropdownButtonFormField<String>(
             value: _puStateController,
+            isExpanded: true,
             decoration: InputDecoration(
               filled: true,
               fillColor: Color.fromRGBO(246, 247, 249, 1),
@@ -393,6 +394,7 @@ class _EnteringMetersPageState extends State<EnteringMetersPage> {
         Container(
           child: DropdownButtonFormField<String>(
             value: _puStateRejectReasonController,
+            isExpanded: true,
             decoration: InputDecoration(
               filled: true,
               fillColor: Color.fromRGBO(246, 247, 249, 1),
