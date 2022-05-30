@@ -103,7 +103,7 @@ class _ActsPage extends State<ActsPage> {
                   minVerticalPadding: 10,
                   visualDensity: VisualDensity(vertical: -4),
                   contentPadding: EdgeInsets.only(left: 20, right: 20),
-                  title: Text(actsList[index],
+                  title: Text(actsList.values.elementAt(index),
                       style: GoogleFonts.roboto(color: Colors.black, fontSize: 13)),
                   trailing: Image.asset(
                     'assets/arrow_send.png',
@@ -111,7 +111,7 @@ class _ActsPage extends State<ActsPage> {
                     height: 16,
                   ),
                   onTap: () {
-                    presenter.navigateToAct(actsList[index]);
+                    presenter.navigateToAct(actsList.keys.elementAt(index), actsList.values.elementAt(index));
                   },
                   // selected: true,
                 ),
