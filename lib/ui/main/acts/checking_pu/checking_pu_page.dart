@@ -90,6 +90,7 @@ class _CheckingPuPageState extends State<CheckingPuPage> {
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Expanded(flex: 1, child: filledTextField('Акт №', _Controller)),
                     Expanded(flex: 0, child: SizedBox(width: 20)),
@@ -119,6 +120,7 @@ class _CheckingPuPageState extends State<CheckingPuPage> {
                 SizedBox(height: 18),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Expanded(flex: 1, child: filledTextField('Номер договора электроснабжения', _Controller)),
                     Expanded(flex: 0, child: SizedBox(width: 20)),
@@ -188,6 +190,7 @@ class _CheckingPuPageState extends State<CheckingPuPage> {
                 SizedBox(height: 18),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Expanded(flex: 1, child: filledTextField('Номер уведомления', _Controller)),
                     Expanded(flex: 0, child: SizedBox(width: 20)),

@@ -224,6 +224,7 @@ class _EnteringMetersPageState extends State<EnteringMetersPage> {
   Row numberAndDateContractFields() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.end,
       children: [
         Expanded(
           // width: 160,

@@ -73,6 +73,7 @@ class _RenewalPowerPageState extends State<RenewalPowerPage> {
                 SizedBox(height: 18),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Expanded(flex: 1, child: filledTextField('Номер уведомления', _Controller)),
                     Expanded(flex: 0, child: SizedBox(width: 20)),

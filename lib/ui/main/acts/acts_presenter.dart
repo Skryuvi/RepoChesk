@@ -6,6 +6,7 @@ import 'entering_meters/entering_meters_page.dart';
 import 'consumer_form/consumer_form_page.dart';
 import 'checking_pu/checking_pu_page.dart';
 import 'renewal_power/renewal_power_page.dart';
+import 'restriction/restriction_page.dart';
 
 class ActsPresenter {
   BuildContext context;
@@ -26,6 +27,9 @@ class ActsPresenter {
         break;
       case 9:
         switchToPage = RenewalPowerPage(title: title); // акт о возобновлении подачии ЭЭ
+        break;
+      case 10:
+        switchToPage = RestrictionPage(title: title); // акт об огранич/приостанов представления ЭЭ
         break;
       default:
         switchToPage = EnteringMetersPage(title: "Внесение показаний по прибору учета (дефолная стр)");
