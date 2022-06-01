@@ -198,7 +198,7 @@ class _CheckingPuPageState extends State<CheckingPuPage> {
                   ],
                 ),
                 SizedBox(height: 18),
-                dateField('Дата уведомления', _Controller, ''),
+                dateField('Дата проверки узла учета', _Controller, ''),
 
                 SizedBox(height: 18),
                 selectMechanicalDamage('Механические повреждения на корпусе ПУ', mechanicalDamageValues),
